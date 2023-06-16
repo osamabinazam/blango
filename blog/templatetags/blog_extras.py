@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 # from django.utils.html import escape
 # from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from blog.models import Post
 
 user_model = get_user_model()
 register = template.Library()
@@ -49,6 +50,19 @@ def col(extra_classes=""):
 def endcol():
   return format_html("</div>")
 
+
+# Fetch Recent post
+@register.inclusion_tag('blog/post-list.html')
+def recent_posts(post):
+  posts = Post.objects.exclude(pk = post.pk)[:5]
+  print(posts)
+  context = {
+    "title": "Recent posts",
+    "posts":posts
+    
+  }
+  return context
+  
 
 # Just for practice purpose
 

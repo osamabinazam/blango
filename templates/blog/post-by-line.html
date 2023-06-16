@@ -1,6 +1,8 @@
 {% load blog_extras %}
 <small>
-    By {{post.author | author_details:request.user}} on {{post.publish_at }}
-
+    By {{post.author | author_details:request.user}} on {{post.published_at }}
+    
+    <!-- Just for learning purpose-->
+    <!--By {% author_details_tag %} on {{post.published_at }} -->
 
 </small>

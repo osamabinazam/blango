@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% comment %} {% load blog_extras %} {% endcomment %}
+{% load blog_extras %}
 {% block content %}
 
 <!-- Acctual Work -->
   <h2>Blog Posts</h2>
   {% for post in posts %}
-  <div class="row">
-    <div class="col">
+  {% row  "border-bottom" %}
+    {% col "col"%}
+    
       <h3> {{post.title }} </h3>
       {% include "blog/post-by-line.html" %}
       <p> {{post.summary}} </p>
@@ -14,8 +15,8 @@
         ( {{post.content|wordcount}} words)
         <a href="{% url 'blog-post-detail' post.slug %}"> Read more</a>
       </p>
-    </div>
-  </div>
+    {%endcol%}
+  {% endrow%}
   {%endfor%}
 
 

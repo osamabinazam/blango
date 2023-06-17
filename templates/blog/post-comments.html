@@ -1,4 +1,4 @@
-{% load blog_extras %}
+{% load blog_extras crispy_forms_tags %}
 <h4>Comments </h4>
 {% for comment in post.comments.all %}
 {% row "border-top pt-2" %}
@@ -25,14 +25,15 @@
 {% row "mt-4" %}
     {%col%}
         <h4>Add Comment</h4>
-        <form method='post'>
+        {% crispy comment_form %}
+        {% comment %} <form method='post'>
             {% csrf_token %}
-            {{comment_form.as_p}}
+            {{comment_form | crispy}}
             <p>
                 <button type="submit" class="btn btn-primary">Submit</button>
 
             </p>
-        </form>
+        </form> {% endcomment %}
     {%endcol%}
 {%endrow%}
 {% endif %}

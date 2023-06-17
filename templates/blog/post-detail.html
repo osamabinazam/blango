@@ -13,12 +13,18 @@
     </div>
 {% endrow%}
 
+<!-- Comment-->
+{% include "blog/post-comments.html" %}
+
+
 <!-- Recent Post  -->
 {% row %}
     {% col %}
         {% recent_posts post%}
     {%endcol%}
 {% endrow%}
+
+
 
 {% endblock content %}
 
